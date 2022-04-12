@@ -22,7 +22,7 @@ public class ScoreSystem : MonoBehaviour
         scoreText.text = Mathf.FloorToInt(score).ToString();
     }
 
-    public int endScore(){
+    public int EndScore(){
         counting = false;
         scoreText.text = string.Empty;
         return Mathf.FloorToInt(score);

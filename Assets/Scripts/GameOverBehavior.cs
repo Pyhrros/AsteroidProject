@@ -12,17 +12,17 @@ public class GameOverBehavior : MonoBehaviour
     [SerializeField] private ScoreSystem scoreSystem;
 
 
-    public void goToMainMenu(){
+    public void GoToMainMenu(){
         SceneManager.LoadScene(0);
     }
-    public void playAgain(){
+    public void PlayAgain(){
         SceneManager.LoadScene(1);
     }
 
-    public void endGame(){
+    public void EndGame(){
         asteroidSpawner.enabled = false;
         GameOverScreen.gameObject.SetActive(true);
-        int score = scoreSystem.endScore();
+        int score = scoreSystem.EndScore();
         scoreText.text = $"Final Score : {score}";
         
     }

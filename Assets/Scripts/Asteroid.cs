@@ -29,7 +29,7 @@ public class Asteroid : MonoBehaviour
         if(health == null){
             return;
         }
-        health.hit();
+        health.Hit();
         
     }
 
@@ -41,13 +41,13 @@ public class Asteroid : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Missile"){
             if(this.size * 0.5f >= this.minSize){
-                instantiateSplit();
-                instantiateSplit();
+                InstantiateSplit();
+                InstantiateSplit();
             }
             Destroy(this.gameObject);
         }
     }
-    public void instantiateSplit(){
+    public void InstantiateSplit(){
        
         this.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,10);
         Vector3 position = this.transform.position;

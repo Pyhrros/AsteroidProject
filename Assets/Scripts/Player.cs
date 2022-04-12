@@ -28,9 +28,9 @@ public class Player : MonoBehaviour
     void Update()
     {   
         
-       processInput();
-       screenWrapAround();
-       shipRotation();
+       ProcessInput();
+       ScreenWrapAround();
+       ShipRotation();
     }
 
     void FixedUpdate() {
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
  {
      transform.localEulerAngles = new Vector3(0, 0, transform.localEulerAngles.z);
  }
-    private void processInput(){
+    private void ProcessInput(){
      if(Touchscreen.current.primaryTouch.press.isPressed){
 
             Vector2 position = Touchscreen.current.primaryTouch.position.ReadValue();
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
             direction.Normalize();
 
             if(shootCount == shootRate){
-                shoot();
+                Shoot();
                 shootCount = 0;
             }else{
                 shootCount++;
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
             direction = Vector3.zero;
         }
     }
-    private void screenWrapAround(){
+    private void ScreenWrapAround(){
         Vector3 newPosition = transform.position;
         Vector3 viewPortPosition = mainCamera.WorldToViewportPoint(transform.position);
 
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
         transform.position = newPosition;
     }
 
-    private void shipRotation(){
+    private void ShipRotation(){
 
         if(playerBody.velocity == Vector3.zero){
             return;
@@ -97,8 +97,8 @@ public class Player : MonoBehaviour
     }
     
 
-    private void shoot(){
+    private void Shoot(){
         Missile missile = Instantiate(this.missileConstruct,this.transform.position,Quaternion.Euler(0f,0f,Random.Range(0f,360f)));
-        missile.missileBehavior(this.direction);
+        missile.MissileBehavior(this.direction);
     }
 }

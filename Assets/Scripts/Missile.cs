@@ -20,7 +20,7 @@ public class Missile : MonoBehaviour
         missileBody.constraints = RigidbodyConstraints.FreezeRotationY;
     }
 
-    public void missileBehavior(Vector2 direction){
+    public void MissileBehavior(Vector2 direction){
         missileBody.AddForce(direction * acceleration);
         Destroy(gameObject, duration);
     }
